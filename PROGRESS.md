@@ -9,6 +9,10 @@
 - [x] Git
 - [x] GitHub
 
+## Backend
+
+- [x] API Workspace
+
 ## Próximo Passo
 
-- [ ] Criar apps/api
+- Configurar Fastify
