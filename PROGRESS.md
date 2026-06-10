@@ -12,7 +12,8 @@
 ## Backend
 
 - [x] API Workspace
+- [x] Fastify Setup
 
 ## Próximo Passo
 
-- Configurar Fastify
+- Health Check Router

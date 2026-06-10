@@ -9,12 +9,19 @@ Backend principal do PulseFlow.
 - Node.js 20+
 - PNPM
 
-## Desenvolvimento
+## Desenvolvimento (Runtime)
 
 Executar em modo watch:
 
 ```bash
 $ pnpm --filter @pulseflow/api dev
+```
+
+Servidor:
+
+```bash
+🚀 PulseFlow API Runtime
+🌐 Link de Acesso: http://localhost:3333
 ```
 
 ## Build
