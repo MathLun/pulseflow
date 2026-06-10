@@ -37,3 +37,9 @@ Transformar eventos operacionais em dados estruturados para rastreabilidade, aut
 - API
 - Dashboard
 - Eventos
+
+## Documentação
+
+- [API Workspace](./apps/api/README.md)
+- [PROGRESS](./PROGRESS.md)
+- [BACKLOG](./BACKLOG.md)
