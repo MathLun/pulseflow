@@ -15,7 +15,8 @@
 - [x] Fastify Setup
 - [x] Health Check Endpoint
 - [x] Health Check Endpoint Integration Tests
+- [x] Application Configuration Module
 
 ## Próximo Passo
 
-- Configuration Module
+- Store Module

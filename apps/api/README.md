@@ -114,3 +114,4 @@ Configurações atuais:
 - [x] Fastify
 - [x] Health Check
 - [x] Integration Tests
+- [x] Configuration Module
