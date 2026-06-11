@@ -17,6 +17,10 @@
 - [x] Health Check Endpoint Integration Tests
 - [x] Application Configuration Module
 
+## Domain
+
+- [x] Store Domain
+
 ## Próximo Passo
 
-- Store Module
+- Store Repository Contract
