@@ -20,7 +20,8 @@
 ## Domain
 
 - [x] Store Domain
+- [x] Store Repository Contract
 
 ## Próximo Passo
 
-- Store Repository Contract
+- Store Repository InMemory
