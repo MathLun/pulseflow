@@ -85,6 +85,25 @@ src/
 ├── index.ts
 ```
 
+## Configuração
+
+A aplicação utiliza uma camada centralizada para gerenciamento de configurações.
+
+Arquivo:
+
+```text
+src/config/env.ts
+```
+
+Configurações atuais:
+
+|--------------|------------|
+| **Variavel** | **Padrão** |
+|--------------|------------|
+| HOST         | 127.0.0.1  |
+| PORT         | 3333       |
+|--------------|------------|
+
 ## Status Atual
 
 - [x] Workspace
