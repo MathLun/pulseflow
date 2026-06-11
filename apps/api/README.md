@@ -30,7 +30,21 @@ $ pnpm --filter @pulseflow/api build
 Executar build gerada:
 
 ```bash
-pnpm --filter @pulseflow/api start
+$ pnpm --filter @pulseflow/api start
+```
+
+## Testes
+
+Executar todos os testes:
+
+```bash
+$ pnpm --filter @pulseflow/api test
+```
+
+Executar em modo watch:
+
+```bash
+$ pnpm --filter @pulseflow/api test:watch
 ```
 
 ## Runtime
@@ -80,3 +94,4 @@ src/
 - [x] Scripts Start
 - [x] Fastify
 - [x] Health Check
+- [x] Integration Tests

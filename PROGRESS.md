@@ -14,7 +14,8 @@
 - [x] API Workspace
 - [x] Fastify Setup
 - [x] Health Check Endpoint
+- [x] Health Check Endpoint Integration Tests
 
 ## Próximo Passo
 
-- Health Check Endpoint Testing
+- Configuration Module
