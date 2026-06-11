@@ -54,5 +54,5 @@ src/
 - [x] Scripts Dev
 - [x] Scripts Build
 - [x] Scripts Start
-- [ ] Fastify
+- [x] Fastify
 - [ ] Health Check
