@@ -13,7 +13,8 @@
 
 - [x] API Workspace
 - [x] Fastify Setup
+- [x] Health Check Endpoint
 
 ## Próximo Passo
 
-- Health Check Router
+- Health Check Endpoint Testing

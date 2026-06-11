@@ -55,4 +55,4 @@ src/
 - [x] Scripts Build
 - [x] Scripts Start
 - [x] Fastify
-- [ ] Health Check
+- [x] Health Check
