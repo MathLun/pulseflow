@@ -22,7 +22,8 @@
 - [x] Store Domain
 - [x] Store Repository Contract
 - [x] Store Repository InMemory
+- [x] Store Repository Tests
 
 ## Próximo Passo
 
-- Store Repository Tests
+- Create Store UseCase
