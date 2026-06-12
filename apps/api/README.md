@@ -115,3 +115,6 @@ Configurações atuais:
 - [x] Health Check
 - [x] Integration Tests
 - [x] Configuration Module
+- [x] Store Domain
+- [x] Store Repository
+- [x] Create Store Use Case

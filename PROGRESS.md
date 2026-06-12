@@ -23,7 +23,8 @@
 - [x] Store Repository Contract
 - [x] Store Repository InMemory
 - [x] Store Repository Tests
+- [x] Create Store Use Case
 
 ## Próximo Passo
 
-- Create Store UseCase
+- Create Store Route
