@@ -21,7 +21,8 @@
 
 - [x] Store Domain
 - [x] Store Repository Contract
+- [x] Store Repository InMemory
 
 ## Próximo Passo
 
-- Store Repository InMemory
+- Store Repository Tests
