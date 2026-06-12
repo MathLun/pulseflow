@@ -118,3 +118,5 @@ Configurações atuais:
 - [x] Store Domain
 - [x] Store Repository
 - [x] Create Store Use Case
+- [x] Store Routes
+- [x] Store Route Tests
