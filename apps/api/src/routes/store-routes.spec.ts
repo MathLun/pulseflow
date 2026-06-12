@@ -33,4 +33,22 @@ describe('Stores Route', () => {
 
 	expect(response.statusCode).toBe(500);
     });
+
+    it('should return empty stores list', async () => {
+	
+	await app.inject({
+		method: 'POST',
+		url: '/stores',
+		payload: {
+		  name: 'Store 1'
+		}
+	});
+	const response = await app.inject({
+		method: 'GET',
+		url: '/stores'
+	});
+
+	expect(response.statusCode).toBe(200);
+	expect(response.json()).toHaveLength(2);
+    });
 });
