@@ -24,9 +24,13 @@
 - [x] Store Repository InMemory
 - [x] Store Repository Tests
 - [x] Create Store Use Case
-- [x] Store Routes
-- [x] Store Route Tests
+- [x] Create Store Routes
+- [x] Create Store Route Tests
+- [x] List Stores Use Case
+- [x] List Stores Use Case Tests
+- [x] List Stores Route
+- [x] List Stores Route Tests
 
 ## Próximo Passo
 
-- List Stores Use Case
+- Find Store By Id Use Case

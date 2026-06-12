@@ -97,12 +97,10 @@ src/config/env.ts
 
 Configurações atuais:
 
-|--------------|------------|
 | **Variavel** | **Padrão** |
 |--------------|------------|
 | HOST         | 127.0.0.1  |
 | PORT         | 3333       |
-|--------------|------------|
 
 ## Status Atual
 
@@ -118,5 +116,6 @@ Configurações atuais:
 - [x] Store Domain
 - [x] Store Repository
 - [x] Create Store Use Case
+- [x] List Stores Use Case
 - [x] Store Routes
 - [x] Store Route Tests
