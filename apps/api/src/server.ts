@@ -1,6 +1,7 @@
 
 
 import Fastify from 'fastify';
+import { storeRoutes } from './routes/store-routes';
 
 export const app = Fastify();
 
@@ -9,3 +10,5 @@ app.get('/health', async () => {
     status: 'ok'
   };
 });
+
+app.register(storeRoutes);
