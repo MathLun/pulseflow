@@ -56,7 +56,9 @@ Servidor Local:
 🌐 Link de Acesso: http://localhost:3333
 ```
 
-## Health Check
+## Endpoints
+
+### Health Check
 
 Verificar status da API
 
@@ -75,6 +77,69 @@ Resposta:
 ```json
 {
   "status": "ok"
+}
+```
+
+### Store Module
+
+**Create Store**
+
+```text
+POST /stores
+```
+
+Request:
+
+```json
+{
+  "name": "Store 1"
+}
+```
+
+Response:
+
+```json
+{
+  "id": "uuid",
+  "name": "Store 1",
+  "createdAt": "2026-06-12T:00:00:00Z"
+}
+```
+---
+
+**List Stores**
+
+```text
+GET /stores
+```
+
+Response:
+
+```json
+[
+ {
+   "id": "uuid",
+   "name": "Store 1",
+   "createdAt": "2026-06-12T00:00:00Z"
+ }
+]
+```
+
+---
+
+**Find Store By Id**
+
+```text
+GET /stores/:id
+```
+
+Response:
+
+```json
+{
+  "id": "uuid",
+  "name": "Store 1",
+  "createdAt": "2026-06-12T00:00:00Z"
 }
 ```
 
@@ -111,11 +176,13 @@ Configurações atuais:
 - [x] Scripts Start
 - [x] Fastify
 - [x] Health Check
+- [x] Unit Tests
 - [x] Integration Tests
 - [x] Configuration Module
 - [x] Store Domain
 - [x] Store Repository
 - [x] Create Store Use Case
 - [x] List Stores Use Case
-- [x] Store Routes
+- [x] Find Store By Id Use Case
+- [x] Store HTTP Routes
 - [x] Store Route Tests
