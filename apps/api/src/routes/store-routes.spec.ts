@@ -51,4 +51,36 @@ describe('Stores Route', () => {
 	expect(response.statusCode).toBe(200);
 	expect(response.json()).toHaveLength(2);
     });
+
+    it('should return store by id', async () => {
+	const createResponse = await app.inject({
+		method: 'POST',
+		url: '/stores',
+		payload: {
+		  name: 'Store 1'
+		}
+	});
+
+	const store = createResponse.json();
+
+	const response = await app.inject({
+		method: 'GET',
+		url: `/stores/${store.id}`
+	});
+
+	expect(response.statusCode).toBe(200);
+	expect(response.json()).toMatchObject({
+		id: store.id,
+		name: 'Store 1'
+	});
+    });
+
+    it('should return error when store does not exist', async () => {
+	const response = await app.inject({
+		method: 'GET',
+		url: '/stores/invalid-id'
+	});
+
+	expect(response.statusCode).toBe(500);
+    });
 });

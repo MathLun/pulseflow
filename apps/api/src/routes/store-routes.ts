@@ -12,6 +12,9 @@ from '../usecases/create-store';
 import { ListStoresUseCase }
 from '../usecases/list-stores';
 
+import { FindStoreByIdUseCase }
+from '../usecases/find-store-by-id';
+
 const repository = new StoreInMemoryRepository();
 
 export async function storeRoutes(
@@ -36,5 +39,16 @@ export async function storeRoutes(
 	  const stores = await usecase.execute();
 
 	  return stores;
+	});
+
+	app.get('/stores/:id', async (request, reply) => {
+	  const { id } = request.params as {
+		  id: string
+	  };
+
+	  const usecase = new FindStoreByIdUseCase(repository);
+
+	  const store = await usecase.execute({ id });
+	  return store;
 	});
 }
