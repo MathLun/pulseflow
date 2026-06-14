@@ -143,6 +143,60 @@ Response:
 }
 ```
 
+## Error Handling
+
+- The API uses a global exception handler to provide consistent HTTP responses.
+
+### Validation Error
+
+Request:
+
+```text
+POST /stores
+```
+
+```json
+{
+  "name": ""
+}
+```
+
+Response:
+
+```json
+{
+  "message": "Store name is required"
+}
+```
+
+Status Code
+
+```text
+400 Bad Request
+```
+
+### Resource Not Found
+
+Request:
+
+```text
+GET /stores/invalid-id
+```
+
+Response:
+
+```json
+{
+  "message": "Store not found"
+}
+```
+
+Status Code
+
+```text
+404 Not Found
+```
+
 ## Estrutura
 
 ```
@@ -186,3 +240,4 @@ Configurações atuais:
 - [x] Find Store By Id Use Case
 - [x] Store HTTP Routes
 - [x] Store Route Tests
+- [x] Global Exception Handling

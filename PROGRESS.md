@@ -38,6 +38,10 @@
 - [x] Find Store By Id Route
 - [x] Find Store By Id Route Tests
 
+## API
+
+- [x] Global Exception Handling
+
 ## Próximo Passo
 
-- Exception Handling
+- [] GitHub Actions CI
