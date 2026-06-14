@@ -31,7 +31,7 @@ describe('Stores Route', () => {
 		}
 	});
 
-	expect(response.statusCode).toBe(500);
+	expect(response.statusCode).toBe(400);
     });
 
     it('should return empty stores list', async () => {
@@ -75,12 +75,15 @@ describe('Stores Route', () => {
 	});
     });
 
-    it('should return error when store does not exist', async () => {
+    it('should return 404 when store does not exist', async () => {
 	const response = await app.inject({
 		method: 'GET',
 		url: '/stores/invalid-id'
 	});
 
-	expect(response.statusCode).toBe(500);
+	expect(response.statusCode).toBe(404);
+	expect(response.json()).toEqual({
+		message: 'Store not found'
+	});
     });
 });

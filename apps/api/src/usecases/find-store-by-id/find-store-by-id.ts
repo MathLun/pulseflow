@@ -2,6 +2,7 @@
 
 import type { Store, StoreRepository }
 from '../../domain/store';
+import { NotFoundError } from '../../errors';
 
 type Input = {
 	id: string
@@ -14,7 +15,7 @@ export class FindStoreByIdUseCase {
 		const store = await this.repository.findById(input.id);
 
 		if (!store) {
-			throw new Error('Store not found');
+			throw new NotFoundError('Store not found');
 		}
 
 		return store;
