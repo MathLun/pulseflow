@@ -42,6 +42,10 @@
 
 - [x] Global Exception Handling
 
+## CI
+
+- [x] GitHub Actions CI
+
 ## Próximo Passo
 
-- [] GitHub Actions CI
+- [ ] Render Deploy

@@ -241,3 +241,4 @@ Configurações atuais:
 - [x] Store HTTP Routes
 - [x] Store Route Tests
 - [x] Global Exception Handling
+- [x] GitHub Actions CI
