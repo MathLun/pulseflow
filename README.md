@@ -2,6 +2,8 @@
 
 # PulseFlow
 
+[![CI](https://github.com/mathlun/pulseflow/actions/workflows/ci.yml/badge.svg)](https://github.com/mathlun/pulseflow/actions/workflows/ci.yml)
+
 Plataforma operacional orientada a eventos.
 
 ## Missão
@@ -43,3 +45,4 @@ Transformar eventos operacionais em dados estruturados para rastreabilidade, aut
 - [API Workspace](./apps/api/README.md)
 - [PROGRESS](./PROGRESS.md)
 - [BACKLOG](./BACKLOG.md)
+- [GitHub Actions CI](https://github.com/mathlun/pulseflow/actions/workflows/ci.yml)
