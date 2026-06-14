@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:api": "pnpm --filter @pulseflow/api test",
+    "build:api": "pnpm --filter @pulseflow/api build"
   },
   "keywords": [],
   "author": "",
