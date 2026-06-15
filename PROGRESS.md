@@ -46,6 +46,10 @@
 
 - [x] GitHub Actions CI
 
+## Deploy
+
+- [x] Environment Variables
+
 ## Próximo Passo
 
 - [ ] Render Deploy

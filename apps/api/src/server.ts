@@ -1,5 +1,6 @@
 
 
+import "dotenv/config";
 import Fastify from 'fastify';
 import { storeRoutes } 
 from './routes/store-routes';

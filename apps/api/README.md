@@ -216,10 +216,16 @@ src/config/env.ts
 
 Configurações atuais:
 
-| **Variavel** | **Padrão** |
-|--------------|------------|
-| HOST         | 127.0.0.1  |
-| PORT         | 3333       |
+| **Variavel** | **Descrição** | **Padrão** |
+|--------------|---------------|------------|
+| HOST         | Server Host   | 127.0.0.1  |
+| PORT         | Server Port   | 3333       |
+
+Para deploy, crie o arquivo:
+
+```text
+.env
+```
 
 ## Status Atual
 
@@ -242,3 +248,4 @@ Configurações atuais:
 - [x] Store Route Tests
 - [x] Global Exception Handling
 - [x] GitHub Actions CI
+- [x] Environment Variables
