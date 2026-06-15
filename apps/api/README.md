@@ -273,3 +273,4 @@ Para deploy, crie o arquivo:
 - [x] GitHub Actions CI
 - [x] Environment Variables
 - [x] Render Deploy
+- [x] Database Module

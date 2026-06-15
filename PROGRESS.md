@@ -51,6 +51,10 @@
 - [x] Environment Variables
 - [x] Render Deploy
 
+## Infrastruture
+
+- [x] Database Module
+
 ## Próximo Passo
 
-- [ ] Database Module
+- [ ] PostgreSQL Integration
