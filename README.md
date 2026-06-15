@@ -3,6 +3,7 @@
 # PulseFlow
 
 [![CI](https://github.com/mathlun/pulseflow/actions/workflows/ci.yml/badge.svg)](https://github.com/mathlun/pulseflow/actions/workflows/ci.yml)
+[![API Running](https://img.shields.io/badge/API-Running-success)](https://pulseflow-api-fa9n.onrender.com/health)
 
 Plataforma operacional orientada a eventos.
 
@@ -46,3 +47,5 @@ Transformar eventos operacionais em dados estruturados para rastreabilidade, aut
 - [PROGRESS](./PROGRESS.md)
 - [BACKLOG](./BACKLOG.md)
 - [GitHub Actions CI](https://github.com/mathlun/pulseflow/actions/workflows/ci.yml)
+- [API](https://pulseflow-api-fa9n.onrender.com)
+- [Health Check](https://pulseflow-api-fa9n.onrender.com/health)

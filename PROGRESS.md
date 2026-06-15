@@ -49,7 +49,8 @@
 ## Deploy
 
 - [x] Environment Variables
+- [x] Render Deploy
 
 ## Próximo Passo
 
-- [ ] Render Deploy
+- [ ] Database Module

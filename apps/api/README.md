@@ -197,6 +197,29 @@ Status Code
 404 Not Found
 ```
 
+## Deployment
+
+### Render
+
+Build Command:
+
+```bash
+$ pnpm install --frozen-lockfile && pnpm run build:api
+```
+
+Start Command:
+
+```bash
+$ pnpm run start:api
+```
+
+Environment Variables:
+
+| **Variavel** | **Descrição** |
+|---‐----------|---------------|
+| HOST         | Server host   |
+| PORT         | Provided automatically by render |
+
 ## Estrutura
 
 ```
@@ -249,3 +272,4 @@ Para deploy, crie o arquivo:
 - [x] Global Exception Handling
 - [x] GitHub Actions CI
 - [x] Environment Variables
+- [x] Render Deploy
