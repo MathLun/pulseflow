@@ -54,7 +54,7 @@
 ## Infrastruture
 
 - [x] Database Module
-
+- [x] PostgreSQL Integration
 ## Próximo Passo
 
-- [ ] PostgreSQL Integration
+- [ ] Store PostgreSQL Repository

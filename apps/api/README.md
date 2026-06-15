@@ -250,6 +250,24 @@ Para deploy, crie o arquivo:
 .env
 ```
 
+## Database
+
+Provedor Atual:
+
+- PostgreSQL (Neon)
+
+Variaveis de ambiente:
+
+```env
+DATABASE_URL=""
+```
+
+Testar conexão:
+
+```bash
+pnpm run test:api
+```
+
 ## Status Atual
 
 - [x] Workspace
@@ -274,3 +292,4 @@ Para deploy, crie o arquivo:
 - [x] Environment Variables
 - [x] Render Deploy
 - [x] Database Module
+- [x] PostgreSQL Integration
