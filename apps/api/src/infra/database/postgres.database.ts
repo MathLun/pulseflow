@@ -29,7 +29,7 @@ implements Database {
 	  return result.rows[0].health === 1;
   }
 
-  async query(sql: string) {
-	  return this.client.query(sql);
+  async query(sql: string, params?: unknown[]) {
+	  return this.client.query(sql, params);
   }
 }
