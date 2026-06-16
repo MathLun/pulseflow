@@ -17,7 +17,9 @@ from './store';
 import { StorePostgresRepository }
 from './store.postgres';
 
-describe('Store Postgres Repository', () => {
+const hasDatabase = Boolean(process.env.DATABASE_URL);
+
+(hasDatabase ? describe : describe.skip)('Store Postgres Repository', () => {
 	const database = new PostgresDatabase(env.DATABASE_URL);
 
 	beforeAll(async () => {

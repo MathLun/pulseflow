@@ -268,6 +268,22 @@ Testar conexão:
 pnpm run test:api
 ```
 
+## Persistence
+
+Repository atual:
+
+- StorePostgresRepository
+
+Database:
+
+- PostgreSQL (Neon)
+
+Suporte Operacionais:
+
+- Create Store
+- Find Store By Id
+- List Stores
+
 ## Status Atual
 
 - [x] Workspace
@@ -293,3 +309,4 @@ pnpm run test:api
 - [x] Render Deploy
 - [x] Database Module
 - [x] PostgreSQL Integration
+- [x] Store Persistence

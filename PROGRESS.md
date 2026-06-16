@@ -57,7 +57,8 @@
 - [x] Database Module
 - [x] PostgreSQL Integration
 - [x] Stores Table
+- [x] Stores Persistence
 
 ## Próximo Passo
 
-- [ ] Stores Persistence
+- [ ] Database Migrations

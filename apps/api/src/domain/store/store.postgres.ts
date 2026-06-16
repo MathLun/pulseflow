@@ -1,5 +1,8 @@
 
 
+import { Store }
+from './store';
+
 import { PostgresDatabase }
 from '../../infra/database/postgres.database';
 
