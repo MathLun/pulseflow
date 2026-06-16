@@ -27,4 +27,20 @@ export class StorePostgresRepository {
 			createdAt: row.created_at
 		}));
 	}
+
+	async findById(id: string): Promise<Store | null> {
+		const result = await this.database.query(`SELECT id, name, created_at FROM stores WHERE id = $1`, [id]);
+
+		if (result.rows.length === 0) {
+			return null;
+		}
+
+		const row = result.rows[0];
+
+		return {
+		  id: row.id,
+		  name: row.name,
+		  createdAt: row.createdAt
+		};
+	}
 }

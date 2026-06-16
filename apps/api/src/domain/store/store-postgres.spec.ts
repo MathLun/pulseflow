@@ -88,4 +88,21 @@ describe('Store Postgres Repository', () => {
 		  name: secondStore.name
 	  });
 	});
+
+	it('should find store by id', async () =>
+	{
+	  const repository = new StorePostgresRepository(database);
+
+	  const store: Store = {
+		  id: crypto.randomUUID(),
+		  name: "Store 1",
+		  createdAt: new Date()
+	  };
+
+	  await repository.create(store);
+
+	  const foundStore = await repository.findById(store.id);
+
+	  expect(foundStore).not.toBeNull();
+	});
 });
