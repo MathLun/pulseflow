@@ -9,7 +9,9 @@ from '../../config/env';
 import { PostgresDatabase }
 from './postgres.database';
 
-describe('Stores Table', () => {
+const hasDatabase = Boolean(process.env.DATABASE_URL);
+
+(hasDatabase ? describe : describe.skip)('Stores Table', () => {
   const database = new PostgresDatabase(env.DATABASE_URL);
 
   beforeAll(async () => {
