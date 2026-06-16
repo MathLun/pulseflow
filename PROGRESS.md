@@ -22,6 +22,7 @@
 - [x] Store Domain
 - [x] Store Repository Contract
 - [x] Store Repository InMemory
+- [x] Store Repository PostgreSQL
 - [x] Store Repository Tests
 
 - [x] Create Store Use Case
@@ -55,6 +56,7 @@
 
 - [x] Database Module
 - [x] PostgreSQL Integration
+
 ## Próximo Passo
 
-- [ ] Store PostgreSQL Repository
+- [ ] Stores Table
