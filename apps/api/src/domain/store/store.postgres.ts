@@ -18,4 +18,13 @@ export class StorePostgresRepository {
 		`, [store.id, store.name, store.createdAt]);
 
 	}
+
+	async findAll(): Promise<Store[]> {
+		const result = await this.database.query(`SELECT id, name, created_at FROM stores ORDER BY created_at ASC`);
+		return result.rows.map(row => ({
+			id: row.id,
+			name: row.name,
+			createdAt: row.created_at
+		}));
+	}
 }

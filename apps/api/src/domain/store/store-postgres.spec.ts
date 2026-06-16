@@ -56,4 +56,36 @@ describe('Store Postgres Repository', () => {
 
 	  expect(result.rows).toHaveLength(1);
 	});
+
+	it('should find all stores', async () =>
+	{
+	  const repository = new StorePostgresRepository(database);
+
+	  const firstStore: Store = {
+		  id: crypto.randomUUID(),
+		  name: "Store 1",
+		  createdAt: new Date()
+	  };
+
+	  const secondStore: Store = {
+		  id: crypto.randomUUID(),
+		  name: "Store 2",
+		  createdAt: new Date()
+	  };
+
+	  await repository.create(firstStore);
+	  await repository.create(secondStore);
+
+	  const stores = await repository.findAll();
+
+	  expect(stores).toHaveLength(2);
+	  expect(stores[0]).toMatchObject({
+		  id: firstStore.id,
+		  name: firstStore.name
+	  });
+	  expect(stores[1]).toMatchObject({
+		  id: secondStore.id,
+		  name: secondStore.name
+	  });
+	});
 });
