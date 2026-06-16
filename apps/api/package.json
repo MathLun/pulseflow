@@ -7,7 +7,8 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "create:stores-table": "tsx src/infra/database/scripts/create-stores.table.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

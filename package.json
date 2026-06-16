@@ -6,7 +6,8 @@
   "scripts": {
     "test:api": "pnpm --filter @pulseflow/api test",
     "build:api": "pnpm --filter @pulseflow/api build",
-    "start:api": "pnpm --filter @pulseflow/api start"
+    "start:api": "pnpm --filter @pulseflow/api start",
+    "create:stores-table": "pnpm --filter @pulseflow/api create:stores-table"
   },
   "keywords": [],
   "author": "",

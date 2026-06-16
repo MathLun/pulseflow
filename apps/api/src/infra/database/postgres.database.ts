@@ -28,4 +28,8 @@ implements Database {
 	  const result = await this.client.query(`SELECT 1 as health`);
 	  return result.rows[0].health === 1;
   }
+
+  async query(sql: string) {
+	  return this.client.query(sql);
+  }
 }
