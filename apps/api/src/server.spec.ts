@@ -1,12 +1,25 @@
 
+import "dotenv/config";
 
-import { describe, expect, it }
+import { describe, expect, it, beforeAll, afterAll }
 from 'vitest'
 
-import { app }
-from './server'
+import { buildServer }
+from './server';
 
-describe('Health Check', () => {
+const hasDatabase = Boolean(process.env.DATABASE_URL);
+
+(hasDatabase ? describe : describe.skip)('Health Check', () => {
+  let app: Awaited<ReturnType<typeof buildServer>>;
+
+  beforeAll(async () => {
+	  app = await buildServer();
+  });
+
+  afterAll(async () => {
+	  await app.close();
+  });
+
   it('should return status ok', async () => {
     const response = await app.inject({
 	method: 'GET',

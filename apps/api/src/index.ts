@@ -1,9 +1,11 @@
 
 
-import { app } from './server';
+import { buildServer } from './server';
 import { env } from './config/env';
 
 async function bootstrap() {
+  const app = await buildServer();
+
   await app.listen({
     host: env.HOST,
     port: env.PORT

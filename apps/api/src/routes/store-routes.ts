@@ -3,7 +3,16 @@
 import { FastifyInstance }
 from 'fastify';
 
+import { env }
+from '../config/env';
+
+import { PostgresDatabase }
+from '../infra/database/postgres.database';
+
 import { StoreInMemoryRepository }
+from '../domain/store';
+
+import { StorePostgresRepository }
 from '../domain/store';
 
 import { CreateStoreUseCase }
@@ -15,11 +24,14 @@ from '../usecases/list-stores';
 import { FindStoreByIdUseCase }
 from '../usecases/find-store-by-id';
 
-const repository = new StoreInMemoryRepository();
-
 export async function storeRoutes(
-	app: FastifyInstance
+	app: FastifyInstance,
+	options: {
+	  database: PostgresDatabase
+	}
 ) {
+	const repository = new StorePostgresRepository(options.database);
+
 	app.post('/stores', async (request, reply) => {
 	  const { name } = request.body as { 
 		  name: string

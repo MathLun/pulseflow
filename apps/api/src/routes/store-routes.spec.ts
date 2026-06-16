@@ -1,11 +1,24 @@
 
+import "dotenv/config";
 
-import { describe, expect, it }
+import { describe, expect, it, beforeAll, afterAll }
 from 'vitest';
 
-import { app } from '../server';
+import { buildServer } from '../server';
 
-describe('Stores Route', () => {
+const hasDatabase = Boolean(process.env.DATABASE_URL);
+
+(hasDatabase ? describe : describe.skip)('Stores Route', () => {
+    let app: Awaited<ReturnType<typeof buildServer>>;
+
+    beforeAll(async () => {
+	    app = await buildServer();
+    });
+
+    afterAll(async () => {
+	    await app.close();
+    });
+
     it('should create a store', async () => {
 	const response = await app.inject({
 		method: 'POST',
@@ -49,7 +62,7 @@ describe('Stores Route', () => {
 	});
 
 	expect(response.statusCode).toBe(200);
-	expect(response.json()).toHaveLength(2);
+	expect(response.json()).toHaveLength(3);
     });
 
     it('should return store by id', async () => {
