@@ -310,3 +310,4 @@ Suporte Operacionais:
 - [x] Database Module
 - [x] PostgreSQL Integration
 - [x] Store Persistence
+- [x] Database Migrations

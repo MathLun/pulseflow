@@ -58,7 +58,15 @@
 - [x] PostgreSQL Integration
 - [x] Stores Table
 - [x] Stores Persistence
+- [x] Database Migrations
+
+## Database
+
+- [x] Database Contract
+- [x] Postgres Database
+- [x] Database Memory
+- [x] Database Migration Infrastructure
 
 ## Próximo Passo
 
-- [ ] Database Migrations
+- [ ] Create Stores Table Migration
