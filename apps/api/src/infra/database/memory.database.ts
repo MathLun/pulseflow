@@ -1,6 +1,6 @@
 
 
-import { Database }
+import { Database, QueryResult }
 from './database';
 
 export class MemoryDatabase
@@ -23,12 +23,15 @@ implements Database {
 	async query<T = unknown>(
 		sql: string,
 		params?: unknown[]
-	): Promise<T[]> {
+	): Promise<QueryResult<T>> {
 		this.queries.push({
 			sql,
 			params
 		});
 
-		return [];
+		return {
+		  rows: [],
+		  rowCount: 0
+		};
 	}
 }

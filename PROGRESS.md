@@ -67,6 +67,9 @@
 - [x] Database Memory
 - [x] Database Migration Infrastructure
 
+## Migrations
+
+- [x] Create Stores Table Migration
 ## Próximo Passo
 
-- [ ] Create Stores Table Migration
+- [ ] Migration Tracking Table

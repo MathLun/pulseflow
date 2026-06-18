@@ -256,10 +256,27 @@ Provedor Atual:
 
 - PostgreSQL (Neon)
 
+### Features
+- Sistema de migrations iniciado
+- MigrationRunner implementado
+- Migration 001-create-stores-table criada
+- Testes unitários e de integração das migrations implementadas
+
+### Tabelas disponiveis
+
+stores
+
+ **Campo** | **Tipo** |
+ ----------|----------|
+ | id | TEXT |
+ | name | TEXT |
+ | created_at | TIMESTAMP |
+
 Variaveis de ambiente:
 
 ```env
 DATABASE_URL=""
+DATABASE_URL_TEST="" # Para Migrations
 ```
 
 Testar conexão:
@@ -311,3 +328,4 @@ Suporte Operacionais:
 - [x] PostgreSQL Integration
 - [x] Store Persistence
 - [x] Database Migrations
+- [x] Create Stores Table Migration
