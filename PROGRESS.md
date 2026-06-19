@@ -70,6 +70,8 @@
 ## Migrations
 
 - [x] Create Stores Table Migration
+- [x] Create Migrations Table Migration
+
 ## Próximo Passo
 
-- [ ] Migration Tracking Table
+- [ ] Skip Already Executed Migrations ( Migration Tracking )
