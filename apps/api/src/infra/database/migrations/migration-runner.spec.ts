@@ -75,4 +75,21 @@ describe('Migration Runner', () => {
 
 		expect(migrations[0]?.id).toEqual('001-create-stores-table');
 	});
+
+	it('should register executed migrations', async () => {
+		const migration = new CreateStoresTableMigration();
+		const runner = new MigrationRunner(
+			database,
+			registry,
+			[migration]
+		);
+
+		await runner.run();
+
+		const executed = await registry.findExecutedIds();
+		expect(executed).toEqual([
+			'001-create-stores-table',
+			'002-find-all-stores-table'
+		]);
+	});
 });

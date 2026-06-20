@@ -23,7 +23,8 @@ export class MigrationRunner {
 		) {
 			if (executedIds.includes(migration.id)) { continue; }
 
-			await migration.up(this.database); 
+			await migration.up(this.database);
+			await this.registry.register(migration.id);
 		}
 	}
 }

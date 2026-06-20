@@ -72,7 +72,8 @@
 - [x] Create Stores Table Migration
 - [x] Create Migrations Table Migration
 - [x] Skip Already Executed Migrations (Migration Tracking)
+- [x] Register Executed Migrations (Migration Tracking)
 
 ## Próximo Passo
 
-- [ ] Register Executed Migrations (Migration Tracking)
+- [ ] Postgres Migration Registry (Migration Tracking)
