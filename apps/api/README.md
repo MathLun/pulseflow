@@ -301,6 +301,41 @@ Suporte Operacionais:
 - Find Store By Id
 - List Stores
 
+## Database Migrations
+
+A API inclue um sistema de migrations com:
+
+- Migration Runner
+- Migration Registry
+- PostgreSQL Migration Tracking
+- Automatic execution of pending migrations
+
+Run migrations:
+
+```bash
+$ pnpm run migrate
+```
+
+O migration runner:
+
+- Cria tabelas requisitadas
+- Executa migrations pendentes
+- Rastrea migrations executadas
+
+---
+
+### Verifique o package.json
+
+Confirme que existe:
+
+```json
+{
+  "scripts": {
+    "migrate": "tsx src/scripts/migrate.ts"
+  }
+}
+```
+
 ## Status Atual
 
 - [x] Workspace
@@ -329,3 +364,4 @@ Suporte Operacionais:
 - [x] Store Persistence
 - [x] Database Migrations
 - [x] Create Stores Table Migration
+- [x] Migration Tracking
