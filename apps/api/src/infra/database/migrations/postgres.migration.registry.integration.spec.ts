@@ -15,7 +15,9 @@ from './postgres.migration.registry';
 import { CreateStoresTableMigration }
 from './001-create-stores-table';
 
-describe('Postgres Migration Registry', () => {
+const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
+
+(hasDatabase ? describe : describe.skip)('Postgres Migration Registry', () => {
 	const database = new PostgresDatabase(env.DATABASE_URL_TEST);
 	const registry = new PostgresMigrationRegistry(database);
 
