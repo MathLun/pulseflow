@@ -1,15 +1,30 @@
 
 
 import { Database } from '../database';
-import { Migration } from './migration';
+
+import { MigrationRegistry }
+from './migration-registry';
+
+import { Migration } 
+from './migration';
 
 export class MigrationRunner {
 	constructor(
 		private readonly database: Database,
+		private readonly registry: MigrationRegistry,
 		private readonly migrations: Migration[]
 	) {}
 
 	async run() {
-		for(const migration of this.migrations) { await migration.up(this.database); }
+		const executedIds = await this.registry.findExecutedIds();
+
+		for(
+			const migration of this.migrations
+		) {
+			if (executedIds.includes(migration.id)) { continue; }
+
+			await migration.up(this.database);
+			await this.registry.register(migration.id);
+		}
 	}
 }
