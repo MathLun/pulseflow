@@ -10,7 +10,9 @@ from '../postgres.database';
 import { CreateMigrationsTableMigration }
 from './002-create-migrations-table';
 
-describe('Create Migrations Table Migration Database', () => {
+const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
+
+(hasDatabase ? describe : describe.skip)('Create Migrations Table Migration Database', () => {
 	const database = new PostgresDatabase(env.DATABASE_URL_TEST);
 
 	beforeAll(async () => {
