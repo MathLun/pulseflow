@@ -26,4 +26,19 @@ implements StoreRepository {
   ): Promise<void> {
     this.stores.push(store);
   }
+
+  public async update(
+	  id: string,
+	  name: string
+  ): Promise<Store | null> {
+	  const store = this.stores.find(
+		store => store.id === id
+	  );
+
+	  if (!store) return null;
+
+	  store.name = name;
+
+	  return store;
+  }
 }

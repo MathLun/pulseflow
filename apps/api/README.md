@@ -143,6 +143,32 @@ Response:
 }
 ```
 
+---
+
+**Update Store**
+
+```text
+PUT /stores/:id
+```
+
+Request:
+
+```json
+{
+  "name": "Nome do Store"
+}
+```
+
+Response:
+
+```json
+{
+  "id": "uuid",
+  "name": "Nome do Store",
+  "createdAt": "2026-06-23"
+}
+```
+
 ## Error Handling
 
 - The API uses a global exception handler to provide consistent HTTP responses.
@@ -300,6 +326,7 @@ Suporte Operacionais:
 - Create Store
 - Find Store By Id
 - List Stores
+- Update Store
 
 ## Database Migrations
 
@@ -353,6 +380,7 @@ Confirme que existe:
 - [x] Create Store Use Case
 - [x] List Stores Use Case
 - [x] Find Store By Id Use Case
+- [x] Update Store Use Case
 - [x] Store HTTP Routes
 - [x] Store Route Tests
 - [x] Global Exception Handling

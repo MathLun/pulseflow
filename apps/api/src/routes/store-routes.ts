@@ -24,6 +24,9 @@ from '../usecases/list-stores';
 import { FindStoreByIdUseCase }
 from '../usecases/find-store-by-id';
 
+import { UpdateStoreUseCase }
+from '../usecases/update-store';
+
 export async function storeRoutes(
 	app: FastifyInstance,
 	options: {
@@ -62,5 +65,29 @@ export async function storeRoutes(
 
 	  const store = await usecase.execute({ id });
 	  return store;
+	});
+
+	app.put('/stores/:id', async (request, reply) => {
+	  const { id } = request.params as {
+		  id: string
+	  };
+
+	  const { name } = request.body as {
+		  name: string
+	  };
+
+	  const usecase = new UpdateStoreUseCase(repository);
+
+	  try {
+	    const store = await usecase.execute(id, name);
+
+	    if (!store) return reply.status(404).send({ message: 'Store not found' });
+
+	    return reply.status(200).send(store);
+	  } catch (e: unknown) {
+	    return reply.status(400).send({
+		    message: 'Store name is required'
+	    });
+	  }
 	});
 }

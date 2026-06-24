@@ -39,6 +39,11 @@
 - [x] Find Store By Id Route
 - [x] Find Store By Id Route Tests
 
+- [x] Update Store Use Case
+- [x] Update Store Use Case Tests
+- [x] Update Store Route
+- [x] Update Store Route Tests
+
 ## API
 
 - [x] Global Exception Handling

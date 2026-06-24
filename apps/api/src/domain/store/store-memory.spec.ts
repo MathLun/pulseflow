@@ -66,4 +66,33 @@ describe('Store InMemory Repository', () => {
     const result = await repository.findById('1');
     expect(result).toBeNull();
   });
+
+  it('should update store', async () => {
+    const repository = new StoreInMemoryRepository();
+
+    const store: Store = {
+	id: 'store-1',
+	name: 'Mercado Bahia',
+	createdAt: new Date()
+    };
+
+    await repository.create(store);
+
+    const updatedStore = await repository.update(
+	store.id,
+	'Mercado Salvador'
+    );
+
+    expect(updatedStore).toEqual({
+	...store,
+	name: 'Mercado Salvador'
+    });
+  });
+
+  it('should return null when store does not exists', async () => {
+    const repository = new StoreInMemoryRepository();
+    const updatedStore = await repository.update('invalid-id', 'Novo nome');
+
+    expect(updatedStore).toBeNull();
+  });
 });
