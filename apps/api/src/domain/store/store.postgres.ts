@@ -12,6 +12,7 @@ type StoreRow = {
 	created_at: Date
 };
 
+
 export class StorePostgresRepository {
 	constructor(private readonly database: PostgresDatabase) {}
 
@@ -50,5 +51,26 @@ export class StorePostgresRepository {
 		  name: row.name,
 		  createdAt: row.created_at
 		};
+	}
+
+	public async update(
+		id: string,
+		name: string
+	): Promise<Store | null> {
+		const result = await this.database.query<StoreRow>(`UPDATE stores SET name = $1 WHERE id = $2 RETURNING *`, [name, id]);
+		if (result.rows.length === 0) return null;
+		const row = result.rows[0];
+
+		return {
+		  id: row.id,
+		  name: row.name,
+		  createdAt: row.created_at
+		};
+	}
+
+	public async delete(
+		id: string
+	): Promise<void> {
+		await this.database.query(`DELETE FROM stores WHERE id = $1`, [id]);
 	}
 }

@@ -17,21 +17,21 @@ from './store';
 import { StorePostgresRepository }
 from './store.postgres';
 
-const hasDatabase = Boolean(process.env.DATABASE_URL);
+const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
 (hasDatabase ? describe : describe.skip)('Store Postgres Repository', () => {
-	const database = new PostgresDatabase(env.DATABASE_URL);
+	const database = new PostgresDatabase(env.DATABASE_URL_TEST);
 
 	beforeAll(async () => {
 	  await database.connect();
 	});
+	
+	beforeEach(async () => {
+	  await database.query('DELETE FROM stores');
+	});
 
 	afterAll(async () => {
 	  await database.disconnect();
-	});
-
-	beforeEach(async () => {
-	  await database.query('DELETE FROM stores');
 	});
 
 	it('should create repository instance', async () => {
@@ -106,5 +106,51 @@ const hasDatabase = Boolean(process.env.DATABASE_URL);
 	  const foundStore = await repository.findById(store.id);
 
 	  expect(foundStore).not.toBeNull();
+	});
+
+	it('should update store', async () => {
+	  const repository = new StorePostgresRepository(database);
+
+	  const store: Store = {
+		  id: 'store-1',
+		  name: 'Mercado Bahia',
+		  createdAt: new Date()
+	  };
+
+	  await repository.create(store);
+
+	  const updatedStore = await repository.update(store.id, 'Mercado Salvador');
+	  expect(updatedStore?.name).toBe('Mercado Salvador');
+	});
+
+	it('should return null when store does not exists', async () => {
+	  const repository = new StorePostgresRepository(database);
+
+	  const updatedStore = await repository.update('invalid-id', 'Novo Nome');
+
+	  expect(updatedStore).toBeNull();
+	});
+
+	it('should delete store', async () => {
+	  const repository = new StorePostgresRepository(database);
+
+	  const store: Store = {
+		id: 'store-1',
+		name: 'Store 1',
+		createdAt: new Date()
+	  };
+
+	  await repository.create(store);
+
+	  await repository.delete(store.id);
+
+	  const foundStore = await repository.findById(store.id);
+
+	  expect(foundStore).toBeNull();
+	});
+
+	it('should not fail when deleting non-existent store', async () => {
+	  const repository = new StorePostgresRepository(database); 
+	  await expect(repository.delete('invalid-id')).resolves.not.toThrow();
 	});
 });

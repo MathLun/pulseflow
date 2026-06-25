@@ -1,21 +1,36 @@
 
 import "dotenv/config";
 
-import { describe, expect, it, beforeAll, afterAll }
+import { describe, expect, it, beforeAll, afterAll, beforeEach }
 from 'vitest';
+
+import { env }
+from '../config/env';
+
+import { PostgresDatabase }
+from '../infra/database/postgres.database';
 
 import { buildServer } from '../server';
 
-const hasDatabase = Boolean(process.env.DATABASE_URL);
+const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
 (hasDatabase ? describe : describe.skip)('Stores Route', () => {
+    const database = new PostgresDatabase(env.DATABASE_URL);
+
     let app: Awaited<ReturnType<typeof buildServer>>;
 
     beforeAll(async () => {
+	    await database.connect();
+
 	    app = await buildServer();
     });
 
+    beforeEach(async () => {
+	    await database.query(`DELETE FROM stores`);
+    });
+
     afterAll(async () => {
+	    await database.disconnect();
 	    await app.close();
     });
 
@@ -62,7 +77,7 @@ const hasDatabase = Boolean(process.env.DATABASE_URL);
 	});
 
 	expect(response.statusCode).toBe(200);
-	expect(response.json()).toHaveLength(3);
+	expect(response.json()).toHaveLength(1);
     });
 
     it('should return store by id', async () => {
@@ -99,4 +114,102 @@ const hasDatabase = Boolean(process.env.DATABASE_URL);
 		message: 'Store not found'
 	});
     });
+
+    it('should update store', async () => {
+	const createResponse = await app.inject({
+	  method: 'POST',
+	  url: '/stores',
+	  payload: {
+	    name: 'Mercado Antigo'
+	  }
+    });
+    
+       const store = createResponse.json();
+
+       const response = await app.inject({
+	method: 'PUT',
+	url: `/stores/${store.id}`,
+	payload: {
+	  name: 'Mercado Novo'
+	}
+       });
+
+       expect(response.statusCode).toBe(200);
+       expect(response.json()).toMatchObject({
+	id: store.id,
+	name: 'Mercado Novo'
+       });
+    });
+
+    it('should return 404 when updating non-existent store', async () => {
+      const response = await app.inject({
+	method: 'PUT',
+	url: '/stores/invalid-id',
+	payload: {
+	  name: 'Novo Nome'
+	}
+      });
+
+      expect(response.statusCode).toBe(404);
+
+      expect(response.json()).toEqual({
+	      message: 'Store not found'
+      });
+    });
+
+    it('should return 400 when updating with empty name', async () => {
+      const createResponse = await app.inject({
+	      method: 'POST',
+	      url: '/stores',
+	      payload: { name: 'Store 1' }
+      });
+
+      const store = createResponse.json();
+
+      const response = await app.inject({
+	      method: 'PUT',
+	      url: `/stores/${store.id}`,
+	      payload: { name: '' }
+      });
+
+      expect(response.statusCode).toBe(400);
+    });
+
+    it('should delete route', async () => {
+      const createResponse = await app.inject({
+	      method: 'POST',
+	      url: '/stores',
+	      payload: { name: 'Store 1' }
+      });
+
+      const store = createResponse.json();
+
+      const deleteResponse = await app.inject({
+	      method: 'DELETE',
+	      url: `/stores/${store.id}`
+      });
+
+      expect(deleteResponse.statusCode).toBe(204);
+
+      const findResponse = await app.inject({
+	      method: 'GET',
+	      url: `/stores/${store.id}`
+      });
+
+      expect(findResponse.statusCode).toBe(404);
+    });
+
+    it('should return 404 when deleting non-existent store', async () => {
+  const response = await app.inject({
+    method: 'DELETE',
+    url: '/stores/invalid-id'
+  });
+
+  expect(response.statusCode)
+    .toBe(404);
+
+  expect(response.json()).toEqual({
+    message: 'Store not found'
+  });
+});
 });

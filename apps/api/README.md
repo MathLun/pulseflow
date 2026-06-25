@@ -143,6 +143,55 @@ Response:
 }
 ```
 
+---
+
+**Update Store**
+
+```text
+PUT /stores/:id
+```
+
+Request:
+
+```json
+{
+  "name": "Nome do Store"
+}
+```
+
+Response:
+
+```json
+{
+  "id": "uuid",
+  "name": "Nome do Store",
+  "createdAt": "2026-06-23"
+}
+```
+
+---
+
+**Delete Store**
+
+```text
+DELETE /stores/:id
+```
+Delete a store.
+
+Response:
+
+```text
+204 No Content
+```
+
+Store not found:
+
+```json
+{
+  "message": "Store not found"
+}
+```
+
 ## Error Handling
 
 - The API uses a global exception handler to provide consistent HTTP responses.
@@ -300,6 +349,8 @@ Suporte Operacionais:
 - Create Store
 - Find Store By Id
 - List Stores
+- Update Store
+- Delete Store
 
 ## Database Migrations
 
@@ -353,6 +404,7 @@ Confirme que existe:
 - [x] Create Store Use Case
 - [x] List Stores Use Case
 - [x] Find Store By Id Use Case
+- [x] Update Store Use Case
 - [x] Store HTTP Routes
 - [x] Store Route Tests
 - [x] Global Exception Handling
@@ -365,3 +417,4 @@ Confirme que existe:
 - [x] Database Migrations
 - [x] Create Stores Table Migration
 - [x] Migration Tracking
+- [x] Store Managment
