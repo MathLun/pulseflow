@@ -130,4 +130,27 @@ const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
 	  expect(updatedStore).toBeNull();
 	});
+
+	it('should delete store', async () => {
+	  const repository = new StorePostgresRepository(database);
+
+	  const store: Store = {
+		id: 'store-1',
+		name: 'Store 1',
+		createdAt: new Date()
+	  };
+
+	  await repository.create(store);
+
+	  await repository.delete(store.id);
+
+	  const foundStore = await repository.findById(store.id);
+
+	  expect(foundStore).toBeNull();
+	});
+
+	it('should not fail when deleting non-existent store', async () => {
+	  const repository = new StorePostgresRepository(database); 
+	  await expect(repository.delete('invalid-id')).resolves.not.toThrow();
+	});
 });

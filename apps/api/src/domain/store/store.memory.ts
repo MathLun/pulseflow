@@ -41,4 +41,13 @@ implements StoreRepository {
 
 	  return store;
   }
+
+  public async delete(
+	  id: string
+  ): Promise<void> {
+	  const deleted = this.stores.filter(
+		  store => store.id !== id
+	  );
+	  this.stores = deleted;
+  }
 }

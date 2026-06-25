@@ -169,6 +169,29 @@ Response:
 }
 ```
 
+---
+
+**Delete Store**
+
+```text
+DELETE /stores/:id
+```
+Delete a store.
+
+Response:
+
+```text
+204 No Content
+```
+
+Store not found:
+
+```json
+{
+  "message": "Store not found"
+}
+```
+
 ## Error Handling
 
 - The API uses a global exception handler to provide consistent HTTP responses.
@@ -327,6 +350,7 @@ Suporte Operacionais:
 - Find Store By Id
 - List Stores
 - Update Store
+- Delete Store
 
 ## Database Migrations
 
@@ -393,3 +417,4 @@ Confirme que existe:
 - [x] Database Migrations
 - [x] Create Stores Table Migration
 - [x] Migration Tracking
+- [x] Store Managment

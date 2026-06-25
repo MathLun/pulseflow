@@ -2,7 +2,7 @@
 
 
 import { StoreRepository }
-from '../domain/store/store.repository';
+from '../../domain/store';
 
 
 export class UpdateStoreUseCase {

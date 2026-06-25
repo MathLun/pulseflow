@@ -158,24 +158,58 @@ const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
     });
 
     it('should return 400 when updating with empty name', async () => {
-  const createResponse = await app.inject({
-    method: 'POST',
-    url: '/stores',
-    payload: {
-      name: 'Store 1'
-    }
-  });
+      const createResponse = await app.inject({
+	      method: 'POST',
+	      url: '/stores',
+	      payload: { name: 'Store 1' }
+      });
 
-  const store = createResponse.json();
+      const store = createResponse.json();
 
+      const response = await app.inject({
+	      method: 'PUT',
+	      url: `/stores/${store.id}`,
+	      payload: { name: '' }
+      });
+
+      expect(response.statusCode).toBe(400);
+    });
+
+    it('should delete route', async () => {
+      const createResponse = await app.inject({
+	      method: 'POST',
+	      url: '/stores',
+	      payload: { name: 'Store 1' }
+      });
+
+      const store = createResponse.json();
+
+      const deleteResponse = await app.inject({
+	      method: 'DELETE',
+	      url: `/stores/${store.id}`
+      });
+
+      expect(deleteResponse.statusCode).toBe(204);
+
+      const findResponse = await app.inject({
+	      method: 'GET',
+	      url: `/stores/${store.id}`
+      });
+
+      expect(findResponse.statusCode).toBe(404);
+    });
+
+    it('should return 404 when deleting non-existent store', async () => {
   const response = await app.inject({
-    method: 'PUT',
-    url: `/stores/${store.id}`,
-    payload: {
-      name: ''
-    }
+    method: 'DELETE',
+    url: '/stores/invalid-id'
   });
 
-  expect(response.statusCode).toBe(400);
+  expect(response.statusCode)
+    .toBe(404);
+
+  expect(response.json()).toEqual({
+    message: 'Store not found'
+  });
 });
 });

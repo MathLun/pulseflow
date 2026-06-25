@@ -67,4 +67,10 @@ export class StorePostgresRepository {
 		  createdAt: row.created_at
 		};
 	}
+
+	public async delete(
+		id: string
+	): Promise<void> {
+		await this.database.query(`DELETE FROM stores WHERE id = $1`, [id]);
+	}
 }

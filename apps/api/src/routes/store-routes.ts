@@ -27,6 +27,9 @@ from '../usecases/find-store-by-id';
 import { UpdateStoreUseCase }
 from '../usecases/update-store';
 
+import { DeleteStoreUseCase }
+from '../usecases/delete-store';
+
 export async function storeRoutes(
 	app: FastifyInstance,
 	options: {
@@ -89,5 +92,31 @@ export async function storeRoutes(
 		    message: 'Store name is required'
 	    });
 	  }
+	});
+
+	app.delete('/stores/:id', async (request, reply) =>
+	{
+	  const { id } = request.params as {
+		  id: string
+	  };
+
+	  const usecase = new DeleteStoreUseCase(repository);
+
+	  try {
+	    const result = await usecase.execute(id);
+	    if (result === null) {
+		return reply.status(404).send({ message: 'Store not found' });
+	    } 
+
+	    return reply.status(204).send();
+	  } catch (e) {
+
+	    if (e instanceof Error) {
+		    return reply.status(400).send({ message: e.message });
+	    }
+
+	    return reply.status(500).send({ message: 'Internal Server Error' });
+	  }
+	  
 	});
 }

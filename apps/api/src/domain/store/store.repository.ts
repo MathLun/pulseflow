@@ -7,4 +7,5 @@ export interface StoreRepository {
   findAll(): Promise<Store[]>
   create(store: Store): Promise<void>
   update(id: string, name: string): Promise<Store | null>
+  delete(id: string): Promise<void>
 }

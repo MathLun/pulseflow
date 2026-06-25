@@ -95,4 +95,22 @@ describe('Store InMemory Repository', () => {
 
     expect(updatedStore).toBeNull();
   });
+
+  it('should delete store', async () => {
+    const repository = new StoreInMemoryRepository();
+
+    const store: Store = {
+	id: 'store-1',
+	name: 'Store 1',
+	createdAt: new Date()
+    };
+
+    await repository.create(store);
+
+    await repository.delete(store.id);
+
+    const foundStore = await repository.findById(store.id);
+
+    expect(foundStore).toBeNull();
+  });
 });

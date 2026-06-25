@@ -80,7 +80,7 @@
 - [x] Register Executed Migrations (Migration Tracking)
 - [x] Postgres Migration Registry (Migration Tracking)
 - [x] Complete Migration Tracking (Feature)
-
+- [x] Store Managment (Feature)
 ## Próximo Passo
 
-- [ ] Store Managment (Feature)
+- [ ] Content Managment (Feature)
