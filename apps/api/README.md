@@ -432,7 +432,9 @@ Confirme que existe:
 - ✅️ CreateOffer UseCase
 - ✅️ CreateOffer UseCase Tests
 - ✅️ Offer Repository Postgres
+- ✅️ Migration 003-create-offers-table
+- ✅️ Migration Tests
 
-🚧 Migration 003-create-offers-table
+🚧 Offer Repository Postgres Tests
 
 

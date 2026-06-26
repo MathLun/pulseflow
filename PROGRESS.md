@@ -73,6 +73,8 @@
 - [x] PostgreSQL Integration
 - [x] Stores Table
 - [x] Stores Persistence
+- [x] Offers Table
+- [x] Offers Persistence
 - [x] Database Migrations
 
 ## Database
@@ -91,6 +93,8 @@
 - [x] Postgres Migration Registry (Migration Tracking)
 - [x] Complete Migration Tracking (Feature)
 - [x] Store Managment (Feature)
+
+- [x] Create Offers Table Migration
 
 ## Próximo Passo
 
