@@ -49,6 +49,8 @@
 - [x] Offer Domain
 - [x] Offer Repository Contract
 - [x] Offer Repository Memory
+- [x] CreateOffer UseCase
+- [x] CreateOffer UseCase Tests
 
 ## API
 

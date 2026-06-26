@@ -352,6 +352,8 @@ Suporte Operacionais:
 - Update Store
 - Delete Store
 
+- Create Offer
+
 ## Database Migrations
 
 A API inclue um sistema de migrations com:
@@ -421,13 +423,15 @@ Confirme que existe:
 
 ## 🚧 Em Construção
 
-- Content Management Context (Offer Module)
+**Content Management Context (Offer Module)**
 
-✅️ Offer Entity
-✅️ Offer Repository Contract
-✅️ Offer Repository Memory
-✅️ Offer Repository Memory Tests
+- ✅️ Offer Entity
+- ✅️ Offer Repository Contract
+- ✅️ Offer Repository Memory
+- ✅️ Offer Repository Memory Tests
+- ✅️ CreateOffer UseCase
+- ✅️ CreateOffer UseCase Tests
 
-🚧 CreateOffer UseCase
+🚧 Offer Postgres Repository
 
 
