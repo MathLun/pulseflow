@@ -431,7 +431,8 @@ Confirme que existe:
 - ✅️ Offer Repository Memory Tests
 - ✅️ CreateOffer UseCase
 - ✅️ CreateOffer UseCase Tests
+- ✅️ Offer Repository Postgres
 
-🚧 Offer Postgres Repository
+🚧 Migration 003-create-offers-table
 
 
