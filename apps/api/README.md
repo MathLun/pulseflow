@@ -418,3 +418,16 @@ Confirme que existe:
 - [x] Create Stores Table Migration
 - [x] Migration Tracking
 - [x] Store Managment
+
+## 🚧 Em Construção
+
+- Content Management Context (Offer Module)
+
+✅️ Offer Entity
+✅️ Offer Repository Contract
+✅️ Offer Repository Memory
+✅️ Offer Repository Memory Tests
+
+🚧 CreateOffer UseCase
+
+

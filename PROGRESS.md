@@ -44,6 +44,12 @@
 - [x] Update Store Route
 - [x] Update Store Route Tests
 
+## Offer Module (Content Management Context)
+
+- [x] Offer Domain
+- [x] Offer Repository Contract
+- [x] Offer Repository Memory
+
 ## API
 
 - [x] Global Exception Handling
@@ -81,6 +87,7 @@
 - [x] Postgres Migration Registry (Migration Tracking)
 - [x] Complete Migration Tracking (Feature)
 - [x] Store Managment (Feature)
+
 ## Próximo Passo
 
 - [ ] Content Managment (Feature)

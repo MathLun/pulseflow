@@ -13,7 +13,7 @@ Transformar eventos operacionais em dados estruturados para rastreabilidade, aut
 
 ## Status
 
-🚧 Em construção
+🚧 Content Management Context (Offer) - Em construção
 
 ## Stack
 
