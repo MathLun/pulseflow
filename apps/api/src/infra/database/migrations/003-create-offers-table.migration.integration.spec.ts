@@ -31,11 +31,11 @@ const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
     });
 
     beforeEach(async () => {
-      await database.query(`DROP TABLE IF EXISTS offers`);
+      await database.query(`DROP TABLE IF EXISTS offers CASCADE`);
     });
 
     afterAll(async () => {
-      await database.query(`DROP TABLE IF EXISTS offers`);
+      await database.query(`DROP TABLE IF EXISTS offers CASCADE`);
       await database.disconnect();
     });
 

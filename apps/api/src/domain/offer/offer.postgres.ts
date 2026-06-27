@@ -9,6 +9,14 @@ from './offer.repository';
 import { PostgresDatabase } 
 from '../../infra/database';
 
+type OfferRow = {
+  id: string;
+  storeId: string;
+  title: string;
+  description: string;
+  createdAt: string;
+};
+
 export class OfferPostgresRepository 
 implements OfferRepository {
   constructor(
@@ -38,7 +46,7 @@ implements OfferRepository {
   }
 
   async findById(id: string): Promise<Offer | null> {
-    const result = await this.database.query<Offer>(
+    const result = await this.database.query<OfferRow>(
       `
         SELECT
           id,
@@ -52,11 +60,21 @@ implements OfferRepository {
       [id],
     );
 
-    return result.rows[0] ?? null;
+    const row = result.rows[0];
+
+    if (!row) return null;
+
+    return {
+	id: row.id,
+	storeId: row.storeId,
+	title: row.title,
+	description: row.description,
+	createdAt: new Date(row.createdAt)
+    };
   }
 
   async findAll(): Promise<Offer[]> {
-    const result = await this.database.query<Offer>(
+    const result = await this.database.query<OfferRow>(
       `
         SELECT
           id,
@@ -68,7 +86,13 @@ implements OfferRepository {
       `,
     );
 
-    return result.rows;
+    return result.rows.map(row => ({
+	id: row.id,
+	storeId: row.storeId,
+	title: row.title,
+	description: row.description,
+	createdAt: new Date(row.createdAt)
+    }));
   }
 
   async update(offer: Offer): Promise<void> {
@@ -88,6 +112,7 @@ implements OfferRepository {
         offer.description,
       ],
     );
+
   }
 
   async delete(id: string): Promise<void> {

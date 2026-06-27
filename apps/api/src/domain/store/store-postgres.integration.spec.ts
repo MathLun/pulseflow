@@ -17,6 +17,9 @@ from './store';
 import { StorePostgresRepository }
 from './store.postgres';
 
+import { CreateStoresTableMigration }
+from '../../infra/database/migrations';
+
 const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
 (hasDatabase ? describe : describe.skip)('Store Postgres Repository', () => {
@@ -24,9 +27,11 @@ const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
 	beforeAll(async () => {
 	  await database.connect();
+	  await new CreateStoresTableMigration().up(database);
 	});
 	
 	beforeEach(async () => {
+	  await database.query('DELETE FROM offers');
 	  await database.query('DELETE FROM stores');
 	});
 

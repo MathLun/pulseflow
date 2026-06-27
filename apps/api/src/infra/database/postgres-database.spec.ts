@@ -10,11 +10,11 @@ from '../../config/env';
 import { PostgresDatabase }
 from './postgres.database';
 
-const hasDatabase = Boolean(process.env.DATABASE_URL);
+const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
 (hasDatabase ? describe : describe.skip)('Postgres Database', () => {
 	it('should connect to progress database', async () => {
-	  const database = new PostgresDatabase(env.DATABASE_URL);
+	  const database = new PostgresDatabase(env.DATABASE_URL_TEST);
 
 	  await expect(database.connect()).resolves.toBeUndefined();
 

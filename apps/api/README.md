@@ -328,10 +328,12 @@ DATABASE_URL=""
 DATABASE_URL_TEST="" # Para Migrations
 ```
 
-Testar conexão:
+Testes:
 
 ```bash
 pnpm run test:api
+pnpm run test:unit
+pnpm run test:integration
 ```
 
 ## Persistence
@@ -434,7 +436,8 @@ Confirme que existe:
 - ✅️ Offer Repository Postgres
 - ✅️ Migration 003-create-offers-table
 - ✅️ Migration Tests
+- ✅️ Offer Repository Postgres Tests
 
-🚧 Offer Repository Postgres Tests
+🚧 CreateOfferRoute (HTTP POST)
 
 

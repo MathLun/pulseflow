@@ -2,7 +2,7 @@
 
 import { describe, expect, it } from 'vitest';
 
-import type { Offer } 
+import { Offer } 
 from './offer';
 
 import { OfferMemoryRepository } 

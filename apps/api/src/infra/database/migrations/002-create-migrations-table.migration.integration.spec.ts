@@ -18,7 +18,7 @@ const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 	beforeAll(async () => {
 		await database.connect();
 
-		await database.query(`DROP TABLE IF EXISTS migrations`);
+		await database.query(`DROP TABLE IF EXISTS migrations CASCADE`);
 	});
 
 	afterAll(async () => {

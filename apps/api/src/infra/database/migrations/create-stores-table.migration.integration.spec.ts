@@ -19,7 +19,7 @@ const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 	beforeAll(async () => {
 		await database.connect();
 
-		await database.query(`DROP TABLE IF EXISTS stores`);
+		await database.query(`DROP TABLE IF EXISTS stores CASCADE`);
 	});
 
 	afterAll(async () => {

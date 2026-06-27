@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test:api": "pnpm --filter @pulseflow/api test",
+    "unit:api": "pnpm --filter @pulseflow/api test:unit",
+    "integration:api": "pnpm --filter @pulseflow/api test:integration",
     "build:api": "pnpm --filter @pulseflow/api build",
     "start:api": "pnpm --filter @pulseflow/api start",
     "migrate:api": "pnpm --filter @pulseflow/api migrate",
