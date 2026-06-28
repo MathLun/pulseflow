@@ -14,15 +14,15 @@ import { buildServer } from '../server';
 
 const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
-(hasDatabase ? describe : describe.skip)('Stores Route', () => {
-    const database = new PostgresDatabase(env.DATABASE_URL);
+(hasDatabase ? describe.skip : describe.skip)('Stores Route', () => {
+    const database = new PostgresDatabase(env.DATABASE_URL_TEST);
 
     let app: Awaited<ReturnType<typeof buildServer>>;
 
     beforeAll(async () => {
 	    await database.connect();
 
-	    app = await buildServer();
+	    app = await buildServer({ database });
     });
 
     beforeEach(async () => {

@@ -12,16 +12,19 @@ from './infra/database/postgres.database';
 import { storeRoutes } 
 from './routes/store-routes';
 
+import { offerRoutes }
+from './routes/offer.routes';
+
 import { AppError }
 from './errors';
 
 
-export const buildServer = async () => {
+export const buildServer = async ({
+	database
+}:{ 
+	database: PostgresDatabase
+}) => {
 	const app = Fastify();
-
-	const database = new PostgresDatabase(env.DATABASE_URL);
-
-	await database.connect();
 
 	app.setErrorHandler((error, request, reply) => {
 		if (error instanceof AppError) {
@@ -39,6 +42,10 @@ export const buildServer = async () => {
 	});
 
 	app.register(storeRoutes, {
+		database
+	});
+
+	app.register(offerRoutes, {
 		database
 	});
 

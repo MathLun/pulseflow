@@ -17,8 +17,10 @@ from './store';
 import { StorePostgresRepository }
 from './store.postgres';
 
-import { CreateStoresTableMigration }
-from '../../infra/database/migrations';
+import { 
+  CreateStoresTableMigration,
+  CreateOffersTableMigration
+} from '../../infra/database/migrations';
 
 const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 
@@ -28,6 +30,7 @@ const hasDatabase = Boolean(process.env.DATABASE_URL_TEST);
 	beforeAll(async () => {
 	  await database.connect();
 	  await new CreateStoresTableMigration().up(database);
+	  await new CreateOffersTableMigration().up(database);
 	});
 	
 	beforeEach(async () => {

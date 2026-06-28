@@ -4,19 +4,28 @@ import "dotenv/config";
 import { describe, expect, it, beforeAll, afterAll }
 from 'vitest'
 
+import { env }
+from './config/env';
+
 import { buildServer }
 from './server';
+
+import { PostgresDatabase }
+from './infra/database';
 
 const hasDatabase = Boolean(process.env.DATABASE_URL);
 
 (hasDatabase ? describe : describe.skip)('Health Check', () => {
+  const database = new PostgresDatabase(env.DATABASE_URL);
   let app: Awaited<ReturnType<typeof buildServer>>;
 
   beforeAll(async () => {
-	  app = await buildServer();
+	  await database.connect();
+	  app = await buildServer({ database });
   });
 
   afterAll(async () => {
+	  await database.disconnect();
 	  await app.close();
   });
 
