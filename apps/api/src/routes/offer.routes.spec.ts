@@ -78,4 +78,47 @@ describe('OfferRoutes', () => {
 
 	  expect(response.statusCode).toBe(201);
 	});
+
+	it('should return all offers', async () => {
+	  const store = await createStore();
+
+	  await app.inject({
+		method: 'POST',
+		url: '/offers',
+		payload: {
+		  storeId: store.id,
+		  title: 'Oferta 1',
+		  description: 'Descrição 1'
+		}
+	  });
+
+	  const response = await app.inject({
+		method: 'GET',
+		url: '/offers'
+	  });
+
+	  expect(response.statusCode).toBe(200);
+
+	  const offers = response.json();
+
+	  expect(offers).toHaveLength(1);
+
+	  expect(offers[0]).toMatchObject({
+		storeId: store.id,
+		title: 'Oferta 1',
+		description: 'Descrição 1'
+	  });
+	});
+
+	it('should return empty offers list', async () => {
+	  const response = await app.inject({
+		method: 'GET',
+		url: '/offers'
+	  });
+
+	  expect(response.statusCode).toBe(200);
+
+	  expect(response.json()).toEqual([]);
+	});
+
 });
