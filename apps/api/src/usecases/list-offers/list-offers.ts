@@ -8,7 +8,7 @@ type ListOffersOutput = {
 	storeId: string;
 	title: string;
 	description: string;
-	createdAt: string;
+	createdAt: Date;
 };
 
 export class ListOffersUseCase {

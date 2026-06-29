@@ -121,4 +121,37 @@ describe('OfferRoutes', () => {
 	  expect(response.json()).toEqual([]);
 	});
 
+	it('should return offer by id', async () => {
+	  const store = await createStore();
+
+	  const createResponse = await app.inject({
+		method: 'POST',
+		url: '/offers',
+		payload: {
+		  storeId: store.id,
+		  title: 'Oferta da semana',
+		  description: '50% de desconto'
+		}
+	  });
+
+	  const offer = createResponse.json();
+
+
+	  const response = await app.inject({
+		method: 'GET',
+		url: `/offers/${offer.data.id}`
+	  });
+
+	  expect(response.statusCode).toBe(200);
+	});
+
+	it('should return 404 when offer does not exists', async () => {
+	  const response = await app.inject({
+		method: 'GET',
+		url: '/offers/invalid-id'
+	  });
+
+	  expect(response.statusCode).toBe(404);
+
+	});
 });

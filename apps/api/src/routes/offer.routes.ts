@@ -19,6 +19,9 @@ from '../usecases/create-offer';
 import { ListOffersUseCase }
 from '../usecases/list-offers';
 
+import { FindOfferByIdUseCase }
+from '../usecases/find-offer-by-id';
+
 type CreateOfferBody = {
 	storeId: string;
 	title: string;
@@ -64,5 +67,15 @@ export async function offerRoutes(
 				message: 'Internal Server Error'
 			});
 		}
+	});
+
+	app.get('/offers/:id', async (request, reply) => {
+	  const { id } = request.params as { id: string };
+	  const usecase = new FindOfferByIdUseCase(offerRepository);
+	  const offer = await usecase.execute({ id });
+
+	  if (!offer) return reply.status(404).send({ message: 'Offer not found' });
+
+	  return reply.status(200).send(offer);
 	});
 }
